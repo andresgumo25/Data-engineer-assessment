@@ -1,6 +1,6 @@
 import pytest
 import json
-from ingest_sqlite import parse_semi_struct, _to_bool_int
+from tools.ingest_sqlite import parse_semi_struct, _to_bool_int
 
 
 def test_parse_json_list():
