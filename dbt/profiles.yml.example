@@ -1,0 +1,14 @@
+# Example dbt profiles.yml for Postgres (place at ~/.dbt/profiles.yml or use env vars)
+
+default:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: postgres
+      port: 5432
+      dbname: jobs_db
+      schema: public
+      threads: 1

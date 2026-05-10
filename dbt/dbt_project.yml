@@ -1,0 +1,11 @@
+name: 'data_engineer_assessment'
+version: '1.0'
+config-version: 2
+profile: '{{ env_var("DBT_PROFILE", "default") }}'
+
+models:
+  +materialized: view
+  staging:
+    +schema: staging
+  marts:
+    +schema: marts

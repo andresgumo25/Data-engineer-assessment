@@ -1,0 +1,42 @@
+// ERD for Data Engineer Technical Assessment
+// Import this file into https://dbdiagram.io to visualize and export diagrams.
+
+Table companies {
+  company_id text [pk]
+  company_name text
+}
+
+Table locations {
+  location_id text [pk]
+  location_string text
+  country text
+}
+
+Table skills {
+  skill_id text [pk]
+  skill text
+}
+
+Table jobs {
+  job_id text [pk]
+  job_title text
+  job_title_short text
+  company_id text [ref: > companies.company_id]
+  location_id text [ref: > locations.location_id]
+  job_via text
+  job_schedule_type text
+  job_work_from_home boolean
+  job_posted_date timestamp
+  job_no_degree_mention boolean
+  job_health_insurance boolean
+  salary_rate text
+  salary_year_avg numeric
+  salary_hour_avg numeric
+  search_location text
+}
+
+Table job_skills {
+  id text [pk]
+  job_id text [ref: > jobs.job_id]
+  skill_id text [ref: > skills.skill_id]
+}

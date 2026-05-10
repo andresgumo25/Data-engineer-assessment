@@ -1,0 +1,23 @@
+# Ejecutar en PowerShell COMO Administrador
+# Guarda este archivo y ejecuta su contenido en una consola PowerShell con privilegios de administrador.
+
+$repo='C:\Users\ANDRES GUACHETA\Desktop\Data engineer Technical assessment'
+$envFile=Join-Path $repo '.env'
+if (Test-Path $envFile) {
+  $pw = (Get-Content $envFile | Where-Object { $_ -match '^POSTGRES_PASSWORD=' } | ForEach-Object { ($_ -split '=',2)[1].Trim() })
+  if (-not $pw) { $pw='postgres' }
+} else { $pw='postgres' }
+
+$url='https://get.enterprisedb.com/postgresql/postgresql-15.4-1-windows-x64.exe'
+$out=Join-Path $env:TEMP 'postgresql-installer.exe'
+Write-Output "Descargando instalador a: $out..."
+Invoke-WebRequest -Uri $url -OutFile $out
+Write-Output 'Instalador descargado. Iniciando instalación no interactiva (puede tardar)...'
+Start-Process -FilePath $out -ArgumentList "--mode unattended --superpassword $pw --servicename postgresql-15 --serverport 5432" -Wait
+Write-Output 'Instalación finalizada. Verificando servicio...'
+Get-Service -Name 'postgresql*' | Select-Object Name, Status
+
+Write-Output 'Si el servicio está Running, crear la base de datos jobs_db (opcional):'
+Write-Output "Si tienes psql en PATH, ejecuta:\n  psql -U postgres -h localhost -c \"CREATE DATABASE jobs_db;\"\nO usar pgAdmin para crear la base de datos 'jobs_db' manualmente."
+
+# FIN

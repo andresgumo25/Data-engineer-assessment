@@ -1,0 +1,10 @@
+ERD instructions (dbdiagram.io)
+
+1) Abrir https://dbdiagram.io
+2) Crear cuenta o usar sin cuenta.
+3) Click 'New diagram' y pegar el contenido de erd.dbml (archivo erd.dbml en el repo).
+4) El diagrama se generará automáticamente; usar 'Export' → PNG/SVG para obtener imagen.
+
+Notas:
+- El archivo erd.dbml usa DBML (dbdiagram) con llaves primarias y referencias.
+- También existe schema.sql en el repo con DDL Postgres si prefieres importar SQL.

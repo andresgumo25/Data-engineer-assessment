@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg_jobs
+    description: "Staging model for raw jobs data"
+    columns:
+      - name: job_id
+        tests:
+          - unique
+          - not_null
+  - name: jobs
+    description: "Core jobs fact table"
+    columns:
+      - name: job_id
+        tests:
+          - unique
+          - not_null
+      - name: company_id
+        tests:
+          - not_null
+  - name: companies
+    description: "Companies dimension"
+    columns:
+      - name: company_id
+        tests:
+          - unique
+          - not_null
+  - name: skills
+    description: "Skills dimension"
+    columns:
+      - name: skill_id
+        tests:
+          - unique
+          - not_null
+  - name: job_skills
+    description: "Junction table between jobs and skills"
+    columns:
+      - name: id
+        tests:
+          - unique
+          - not_null
