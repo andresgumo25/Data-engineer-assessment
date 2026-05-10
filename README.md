@@ -32,6 +32,8 @@ See docs/explicacion.md for full implementation details and run instructions.
 - Credentials are not hardcoded; use .env and profiles.yml for dbt.
 - For quick local experimentation, SQLite is provided; for full dbt runs use Postgres.
 
+Note: The dataset Docs/data_jobs.csv has been intentionally excluded from this repository and is not provided here.
+
 Next steps / Bonus
 - Add CI: GitHub Actions to run pytest and (optionally) dbt tests against a Postgres service.
 - Add orchestration with Prefect/Airflow as needed.
