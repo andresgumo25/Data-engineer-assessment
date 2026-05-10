@@ -11,3 +11,8 @@ __pycache__/
 # dbt artifacts
 target/
 dbt_packages/
+
+# Ignore large CSVs and data exports
+Docs/data_jobs.csv
+data_jobs.csv
+
